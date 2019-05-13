@@ -15,13 +15,8 @@ class Home extends React.Component {
     }
 
     return (
-      <div>
-        <ItemList
-          items={this.state.data.offers}
-          onLink={toto => {
-            this.setState({ itemShown: toto });
-          }}
-        />
+      <div className="home-body">
+        <ItemList items={this.state.data.offers} />
       </div>
     );
   }

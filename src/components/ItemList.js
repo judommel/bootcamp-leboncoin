@@ -2,17 +2,12 @@ import React from "react";
 import Item from "./Item";
 
 function ItemList(props) {
-  const { items, onLink } = props;
+  const { items } = props;
 
   return (
-    <div>
+    <div className="container itemList">
       {items.map(element => (
-        <Item
-          item={element}
-          onLink={() => {
-            onLink(element._id);
-          }}
-        />
+        <Item item={element} />
       ))}
     </div>
   );

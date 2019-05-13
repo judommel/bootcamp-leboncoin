@@ -2,13 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Item(props) {
-  const { item, onLink } = props;
+  const { item } = props;
 
   return (
     <div className="item">
       <div className="item-pic" />
-      <div>
+      <div className="item-description">
         <Link
+          className="item-link"
           to={`/offer/${item._id}`}
           //   onClick={() => {
           //     onLink();
@@ -16,7 +17,7 @@ function Item(props) {
         >
           {item.title}
         </Link>
-        <div>{item.price}</div>
+        <div className="item-price">{`${item.price} €`}</div>
       </div>
     </div>
   );

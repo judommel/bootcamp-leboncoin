@@ -49,6 +49,13 @@ code {
   flex-direction: column;
 }
 
+.page-links {
+  cursor: pointer;
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+
 /* OFFER */
 
 .offer {

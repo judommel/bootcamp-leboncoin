@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from "./Home";
+import Offer from "./Offer";
 
 class App extends React.Component {
   render() {

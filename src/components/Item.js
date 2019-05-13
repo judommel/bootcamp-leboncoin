@@ -9,19 +9,10 @@ function Item(props) {
       <div className="item-pic" />
 
       <div className="item-description">
-        <Link
-          className="item-link"
-          to={`/offer/${item._id}`}
-       
-        >
+        <Link className="item-link" to={`/offer/${item._id}`}>
           {item.title}
         </Link>
         <div className="item-price">{`${item.price} €`}</div>
-
-      <div>
-        <Link to={`/offer/${item._id}`}>{item.title}</Link>
-        <div>{item.price}</div>
-
       </div>
     </div>
   );

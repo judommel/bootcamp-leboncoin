@@ -4,7 +4,6 @@ body {
   font-family: "Open Sans", sans-serif;
 
   background-color: #fafafa;
-
 }
 
 code {
@@ -16,7 +15,6 @@ code {
   width: 1068px;
   margin: auto;
 }
-
 
 /* HEADER */
 .header-body {
@@ -49,6 +47,7 @@ code {
   padding: 20px 0px;
   display: flex;
   flex-direction: column;
+}
 
 /* OFFER */
 
@@ -126,7 +125,6 @@ code {
 .offer h3 {
   font-size: 16px;
   line-height: 24px;
-
 }
 
 .item {
@@ -161,7 +159,7 @@ code {
   color: #f56b2a;
 }
 .item-price {
-  color: black;
+  color: #f56b2a;
   font-size: 16px;
   line-height: 18px;
   margin-top: 5px;

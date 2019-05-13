@@ -8,14 +8,7 @@ function Item(props) {
     <div className="item">
       <div className="item-pic" />
       <div>
-        <Link
-          to={`/offer/${item._id}`}
-          //   onClick={() => {
-          //     onLink();
-          //   }}
-        >
-          {item.title}
-        </Link>
+        <Link to={`/offer/${item._id}`}>{item.title}</Link>
         <div>{item.price}</div>
       </div>
     </div>

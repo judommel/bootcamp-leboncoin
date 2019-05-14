@@ -14,6 +14,7 @@ code {
 .container {
   width: 1068px;
   margin: auto;
+  background-color: red;
 }
 
 /* HEADER */
@@ -276,6 +277,117 @@ code {
   margin-top: 5px;
 }
 
+
+/* Log In Page */
+.logIn-padding {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+}
+
+.logIn-connexion {
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.logIn-connexion-container {
+  border-bottom: 2px solid #f56b2a;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.logIn-form-container {
+  width: 600px;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logIn-form-container {
+  width: 600px;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logIn-form-container p {
+  width: 100%;
+}
+
+.logIn-form-email {
+  width: 100%;
+  font-size: 20px;
+  line-height: 24px;
+  border-radius: 5px;
+  border: 1px solid #cad0d8;
+  padding: 5px;
+}
+
+.logIn-form-password {
+  width: 100%;
+  font-size: 20px;
+  line-height: 24px;
+  border-radius: 5px;
+  border: 1px solid #cad0d8;
+  padding: 5px;
+}
+
+.logIn-submit {
+  background-color: #3a7ab9;
+  color: white;
+  width: 100%;
+  height: 42px;
+  font-size: 13px;
+  line-height: 19px;
+  font-weight: 600;
+  margin-top: 20px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.logIn-createAccount {
+  width: 100%;
+  border: 1px solid #3a7ab9;
+  border-radius: 5px;
+  padding: 5px 0px;
+  color: #3a7ab9;
+}
+
+.logIn-signIn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logIn-noAccount {
+  font-size: 13px;
+  line-height: 19px;
+  color: #1a1a1a;
+  font-weight: 600;
+  text-align: center;
+}
+
+.logIn-signIn-link {
+  font-size: 13px;
+  line-height: 19px;
+  width: 100%;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.logIn-createAccount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+
 /*SIGN UP */
 
 .sign-up-box {
@@ -342,4 +454,5 @@ code {
 .password-error {
   height: 20px;
   color: #f56b2a;
+
 }

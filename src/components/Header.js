@@ -15,14 +15,17 @@ function Header(props) {
       <div className="header-recherche-favoris">
         <div>Mes recherches</div>
         <div>Mes favoris</div>
-        <div>Messages</div>
-        <Link to="/user/sign-up"> Créer un compte </Link>
-        <div className="header-seConnecter">
-          <p>
-            <i className="far fa-user" />
-          </p>
-          <p>Se connecter</p>
-        </div>
+        <Link to={`/user/sign-up`}>
+          <div>Créer un compte</div>
+        </Link>
+        <Link to={`/user/log-in`}>
+          <div className="header-seConnecter">
+            <p>
+              <i className="far fa-user" />
+            </p>
+            <p>Se connecter</p>
+          </div>
+        </Link>
       </div>
     </div>
   );

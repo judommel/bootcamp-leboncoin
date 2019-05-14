@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./Home";
 import Offer from "./Offer";
 import Header from "./Header";
+import LogIn from "./LogIn";
 import SignUp from "./SignUp";
 import Cookies from "js-cookie";
+
 
 class App extends React.Component {
   state = {
@@ -21,8 +23,17 @@ class App extends React.Component {
         <Header />
         <Route exact path="/" component={Home} />
         <Route path="/offer/:id" component={Offer} />
-        <Route
-          path="/user/sign-up"
+        <Route path="/user/log-in"
+          render={props => {
+            return (
+              <LogIn
+                onLogIn={toto => {
+                  this.setState({ userData: toto });
+                }}
+              />
+            );
+          }} />
+<Route path="/user/sign-up"
           render={props => (
             <SignUp onSignUp={user => this.setState({ userData: user })} />
           )}

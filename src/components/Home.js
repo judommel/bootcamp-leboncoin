@@ -7,7 +7,8 @@ class Home extends React.Component {
   state = {
     data: null,
     isLoading: true,
-    itemShown: null
+    itemShown: null,
+    current: 1
   };
 
   render() {
@@ -19,6 +20,7 @@ class Home extends React.Component {
       <div className="home-body">
         <ItemList items={this.state.data.offers} />
         <Pages
+          current={this.state.current}
           count={this.state.data.count}
           onPageClick={i => {
             console.log(i);
@@ -29,7 +31,11 @@ class Home extends React.Component {
                   (i - 1)}&limit=25`
               )
               .then(response =>
-                this.setState({ data: response.data, isLoading: false })
+                this.setState({
+                  data: response.data,
+                  isLoading: false,
+                  current: i
+                })
               );
           }}
         />

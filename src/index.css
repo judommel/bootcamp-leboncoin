@@ -14,7 +14,6 @@ code {
 .container {
   width: 1068px;
   margin: auto;
-  background-color: red;
 }
 
 /* HEADER */
@@ -277,7 +276,6 @@ code {
   margin-top: 5px;
 }
 
-
 /* Log In Page */
 .logIn-padding {
   margin: 20px auto;
@@ -387,6 +385,7 @@ code {
   justify-content: center;
   align-items: center;
   height: 30px;
+}
 
 /*SIGN UP */
 
@@ -454,5 +453,4 @@ code {
 .password-error {
   height: 20px;
   color: #f56b2a;
-
 }

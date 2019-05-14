@@ -2,6 +2,7 @@ import React from "react";
 import ItemList from "./ItemList";
 import Pages from "./Pages";
 import axios from "axios";
+import Search from "./Search";
 
 class Home extends React.Component {
   state = {
@@ -17,28 +18,32 @@ class Home extends React.Component {
     }
 
     return (
-      <div className="home-body">
-        <ItemList items={this.state.data.offers} />
-        <Pages
-          current={this.state.current}
-          count={this.state.data.count}
-          onPageClick={i => {
-            console.log(i);
+      <div>
+        {" "}
+        <Search />
+        <div className="home-body">
+          <ItemList items={this.state.data.offers} />
+          <Pages
+            current={this.state.current}
+            count={this.state.data.count}
+            onPageClick={i => {
+              console.log(i);
 
-            axios
-              .get(
-                `https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=${25 *
-                  (i - 1)}&limit=25`
-              )
-              .then(response =>
-                this.setState({
-                  data: response.data,
-                  isLoading: false,
-                  current: i
-                })
-              );
-          }}
-        />
+              axios
+                .get(
+                  `https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=${25 *
+                    (i - 1)}&limit=25`
+                )
+                .then(response =>
+                  this.setState({
+                    data: response.data,
+                    isLoading: false,
+                    current: i
+                  })
+                );
+            }}
+          />
+        </div>
       </div>
     );
   }

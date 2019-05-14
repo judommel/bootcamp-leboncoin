@@ -4,6 +4,9 @@ import Home from "./Home";
 import Offer from "./Offer";
 import Header from "./Header";
 import LogIn from "./LogIn";
+import SignUp from "./SignUp";
+import Cookies from "js-cookie";
+
 
 class App extends React.Component {
   state = {
@@ -11,24 +14,29 @@ class App extends React.Component {
   };
 
   render() {
+    if (this.state.userData !== null) {
+      Cookies.set("token", this.state.userData.token);
+    }
+
     return (
       <Router>
         <Header />
         <Route exact path="/" component={Home} />
         <Route path="/offer/:id" component={Offer} />
-        <Route
-          path="/user/log-in"
+        <Route path="/user/log-in"
           render={props => {
-            const page = parseInt(props.match.params.pagenum, 10);
             return (
               <LogIn
-                key={page}
                 onLogIn={toto => {
                   this.setState({ userData: toto });
                 }}
               />
             );
-          }}
+          }} />
+<Route path="/user/sign-up"
+          render={props => (
+            <SignUp onSignUp={user => this.setState({ userData: user })} />
+          )}
         />
       </Router>
     );

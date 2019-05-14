@@ -92,6 +92,13 @@ code {
   padding: 0;
 }
 
+/* SEARCH */
+
+.search-box {
+  background-color: #e6ebef;
+  height: 165px;
+}
+
 /* HOME */
 .home-body {
   background-color: #fafafa;
@@ -270,6 +277,7 @@ code {
   margin-top: 5px;
 }
 
+
 /* Log In Page */
 .logIn-padding {
   margin: 20px auto;
@@ -379,4 +387,72 @@ code {
   justify-content: center;
   align-items: center;
   height: 30px;
+
+/*SIGN UP */
+
+.sign-up-box {
+  width: 100%;
+  height: 560px;
+  margin-top: 20px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sign-up-box {
+  font-size: 13px;
+  line-height: 19px;
+}
+
+.info-box {
+  width: 50%;
+  text-align: center;
+  padding: 20px 30px;
+}
+
+.form-box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px;
+  justify-content: space-around;
+}
+
+.form-title {
+  border-bottom: 2px solid #f56b2a;
+  text-align: center;
+}
+
+.signup-pass {
+  display: flex;
+  display: space-between;
+}
+
+.signup-pass input {
+  flex: 1;
+  width: auto;
+}
+
+.signup-input {
+  border-radius: 5px;
+  height: 40px;
+  padding: 0;
+  font-size: 13px;
+  line-height: 19px;
+  width: 100%;
+}
+
+.signup-button {
+  background-color: #4183d7;
+  color: #ffffff;
+  border-radius: 5px;
+  height: 40px;
+  font-size: 13px;
+  line-height: 19px;
+}
+
+.password-error {
+  height: 20px;
+  color: #f56b2a;
+
 }

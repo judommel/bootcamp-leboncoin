@@ -122,7 +122,6 @@ class SignUp extends React.Component {
                       }
                     )
                     .then(response => {
-                      console.log(response.data);
                       alert(`Bienvenue ${response.data.account.username} !`);
                       onSignUp(response.data);
                     });

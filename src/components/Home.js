@@ -9,7 +9,9 @@ class Home extends React.Component {
     data: null,
     isLoading: true,
     itemShown: null,
-    current: 1
+    current: 1,
+    search: false,
+    searched: ""
   };
 
   render() {
@@ -20,19 +22,33 @@ class Home extends React.Component {
     return (
       <div>
         {" "}
-        <Search />
+        <Search
+          onSearch={e => {
+            axios
+              .get(
+                `https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=0&limit=25&title=${e}`
+              )
+              .then(response =>
+                this.setState({
+                  data: response.data,
+                  isLoading: false,
+                  search: true,
+                  searched: e
+                })
+              );
+          }}
+        />
         <div className="home-body">
           <ItemList items={this.state.data.offers} />
           <Pages
             current={this.state.current}
             count={this.state.data.count}
             onPageClick={i => {
-              console.log(i);
-
               axios
                 .get(
-                  `https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=${25 *
-                    (i - 1)}&limit=25`
+                  `https://leboncoin-api.herokuapp.com/api/offer/with-count?title=${
+                    this.state.searched
+                  }&skip=${25 * (i - 1)}&limit=25`
                 )
                 .then(response =>
                   this.setState({

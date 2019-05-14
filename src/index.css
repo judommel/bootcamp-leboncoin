@@ -98,9 +98,29 @@ code {
   height: 165px;
 }
 
-.search-button {
+.search-box input,
+button {
+  border-radius: 5px;
   height: 40px;
+  padding: 0px 0px;
+  margin: 10px 0px;
+  font-size: 13px;
+  line-height: 19px;
+}
+
+.search-inline {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-search-input {
+  width: 794px;
+}
+
+.search-button {
   width: 256px;
+  color: #ffffff;
+  background-color: #4183d7;
 }
 
 /* HOME */

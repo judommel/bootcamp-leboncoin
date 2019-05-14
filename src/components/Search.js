@@ -7,18 +7,25 @@ class Search extends React.Component {
   };
 
   render() {
+    const { onSearch } = this.props;
+
     return (
       <div className="search-box">
         <div className="container">
           <div className="search-inline">
             <input
+              className="main-search-input"
               type="text"
               onChange={e => this.setState({ itemSearch: e.target.value })}
-              placeholder="Que recherchez-vous ?"
+              placeholder="  Que recherchez-vous ?"
             />
             <button
               className="search-button"
-              onClick={() => console.log("search")}
+              onClick={() => {
+                if (this.state.itemSearch !== null) {
+                  onSearch(this.state.itemSearch);
+                }
+              }}
             >
               Rechercher
             </button>

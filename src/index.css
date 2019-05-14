@@ -49,11 +49,51 @@ code {
   flex-direction: column;
 }
 
+/* PAGES */
+
+.page-flex {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
 .page-links {
+  margin: 0;
+  padding: 0;
   cursor: pointer;
   display: flex;
   list-style: none;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+.page-li {
+  padding: 0px 10px;
+  margin: 0px 10px;
+  border-radius: 5px;
+  color: #336699;
+}
+
+.page-links li:hover {
+  background-color: #d8d8d8;
+  text-decoration: underline;
+  color: #4485d7;
+}
+
+.page-flex i {
+  padding-top: 3px;
+  color: #336699;
+}
+
+.page-flex i:hover {
+  cursor: pointer;
+}
+
+.current-page {
+  padding: 0px 10px;
+  margin: 0px 10px;
+  border-radius: 5px;
+  background-color: #f56b2a;
+  color: #ffffff;
 }
 
 /* OFFER */

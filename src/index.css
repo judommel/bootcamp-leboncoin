@@ -30,10 +30,67 @@ code {
   flex-direction: row;
 }
 
-.yolo {
-  height: 70%;
-  fill: black;
+.header-annonce {
+  height: 10px;
+  width: 190px;
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  align-items: center;
+  background-color: #f56b2a;
+  border-radius: 5px;
+  color: white;
+  padding: 15px 8px;
+  margin: 0;
+  margin-left: 0px;
 }
+
+.header-recherche-favoris {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+
+  height: 100%;
+}
+
+.header-annonce:hover {
+  cursor: pointer;
+  background-color: #c0562a;
+}
+.header-annonce-logo {
+  height: 25px;
+}
+.header-annonce-text {
+  margin-left: 10px;
+  font-size: 14px;
+  line-height: 21px;
+  color: #ffffff;
+}
+
+.header-search {
+  display: flex;
+  color: #1a1a1a;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+}
+
+.header-seconnecter {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-seConnecter > p {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 /* HOME */
 .home-body {
   background-color: #fafafa;

@@ -54,7 +54,11 @@ class LogIn extends React.Component {
                   password: this.state.password
                 })
                 .then(function(response) {
-                  onLogIn(response.data);
+                  onLogIn({
+                    id: response.data._id,
+                    username: response.data.account.username,
+                    token: response.data.token
+                  });
                 })
                 .catch(error => {
                   this.setState({ errorStatut: true });

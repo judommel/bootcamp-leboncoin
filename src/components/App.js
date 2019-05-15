@@ -5,6 +5,7 @@ import Offer from "./Offer";
 import Header from "./Header";
 import LogIn from "./LogIn";
 import SignUp from "./SignUp";
+import Publish from "./Publish";
 import Cookies from "js-cookie";
 
 class App extends React.Component {
@@ -44,6 +45,7 @@ class App extends React.Component {
             <SignUp onSignUp={user => this.setState({ userData: user })} />
           )}
         />
+        <Route path="/publish" component={Publish} />
       </Router>
     );
   }

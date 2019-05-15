@@ -11,50 +11,46 @@ class SignUp extends React.Component {
     error: null
   };
 
-  // handleSubmit(e) {
-  //   {
-  //     e.preventDefault();
+  handleSubmit(e) {
+    {
+      e.preventDefault();
 
-  //     if (this.state.error !== null) {
-  //       this.setState({ error: null });
-  //     }
-
-  //     if (
-  //       this.state.passwordCheck === true &&
-  //       this.state.password !== null &&
-  //       this.state.email !== null &&
-  //       this.state.username !== null
-  //     ) {
-  //       axios
-  //         .post("https://leboncoin-api.herokuapp.com/api/user/sign_up", {
-  //           email: this.state.email,
-  //           username: this.state.username,
-  //           password: this.state.password
-  //         })
-  //         .then(response => {
-  //           alert(`Bienvenue ${response.data.account.username} !`);
-  //           onSignUp(response.data);
-  //         })
-  //         .catch(error => {
-  //           this.setState({ error: error });
-  //         });
-  //     } else {
-  //       alert("Informations invalides.");
-  //     }
-  //   }
-  // }
+      if (this.state.error !== null) {
+        this.setState({ error: null });
+      }
+      axios
+        .post("https://leboncoin-api.herokuapp.com/api/user/sign_up", {
+          email: this.state.email,
+          username: this.state.username,
+          password: this.state.password
+        })
+        .then(response => {
+          alert(`Bienvenue ${response.data.account.username} !`);
+          this.props.onSignUp({
+            id: response.data._id,
+            token: response.data.token,
+            username: response.data.account.username
+          });
+        })
+        .catch(error => {
+          this.setState({ error: error });
+        });
+    }
+  }
 
   render() {
-    const { onSignUp } = this.props;
-
     return (
       <div className="container">
         <div className="sign-up-box">
-          <div className="info-box">Pourquoi créer un compte ?</div>
-          <form
-            className="form-box"
-            // onSubmit={ }
-          >
+          <div className="info-box">
+            <h3>Pourquoi créer un compte ?</h3>
+            {this.state.error && (
+              <div className="error">
+                {this.state.error.response.data.error}
+              </div>
+            )}
+          </div>
+          <form className="form-box" onSubmit={e => this.handleSubmit(e)}>
             <h3 className="form-title">Créez un compte</h3>
             <div className="sign-input-info">
               <label>Pseudo</label>{" "}
@@ -140,47 +136,10 @@ class SignUp extends React.Component {
                 J'accepte les Conditions Générales de Vente
               </label>
             </div>
-            <button
-              type="submit"
-              className="signup-button"
-              onClick={e => {
-                e.preventDefault();
-
-                if (this.state.error !== null) {
-                  this.setState({ error: null });
-                }
-
-                if (
-                  this.state.passwordCheck === true &&
-                  this.state.password !== null &&
-                  this.state.email !== null &&
-                  this.state.username !== null
-                ) {
-                  axios
-                    .post(
-                      "https://leboncoin-api.herokuapp.com/api/user/sign_up",
-                      {
-                        email: this.state.email,
-                        username: this.state.username,
-                        password: this.state.password
-                      }
-                    )
-                    .then(response => {
-                      alert(`Bienvenue ${response.data.account.username} !`);
-                      onSignUp(response.data);
-                    })
-                    .catch(error => {
-                      this.setState({ error: error });
-                    });
-                } else {
-                  alert("Informations invalides.");
-                }
-              }}
-            >
+            <button type="submit" className="signup-button">
               Créer mon compte personnel
             </button>
           </form>
-          {this.state.error && <div> this.state.error.response </div>}
         </div>
       </div>
     );

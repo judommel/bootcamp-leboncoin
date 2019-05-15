@@ -7,8 +7,42 @@ class SignUp extends React.Component {
     username: null,
     password: null,
     passwordBis: null,
-    passwordCheck: false
+    passwordCheck: false,
+    error: null
   };
+
+  // handleSubmit(e) {
+  //   {
+  //     e.preventDefault();
+
+  //     if (this.state.error !== null) {
+  //       this.setState({ error: null });
+  //     }
+
+  //     if (
+  //       this.state.passwordCheck === true &&
+  //       this.state.password !== null &&
+  //       this.state.email !== null &&
+  //       this.state.username !== null
+  //     ) {
+  //       axios
+  //         .post("https://leboncoin-api.herokuapp.com/api/user/sign_up", {
+  //           email: this.state.email,
+  //           username: this.state.username,
+  //           password: this.state.password
+  //         })
+  //         .then(response => {
+  //           alert(`Bienvenue ${response.data.account.username} !`);
+  //           onSignUp(response.data);
+  //         })
+  //         .catch(error => {
+  //           this.setState({ error: error });
+  //         });
+  //     } else {
+  //       alert("Informations invalides.");
+  //     }
+  //   }
+  // }
 
   render() {
     const { onSignUp } = this.props;
@@ -17,13 +51,16 @@ class SignUp extends React.Component {
       <div className="container">
         <div className="sign-up-box">
           <div className="info-box">Pourquoi créer un compte ?</div>
-          <div className="form-box">
+          <form
+            className="form-box"
+            // onSubmit={ }
+          >
             <h3 className="form-title">Créez un compte</h3>
-
             <div className="sign-input-info">
-              <div>Pseudo</div>{" "}
+              <label>Pseudo</label>{" "}
               <input
                 required
+                name="username"
                 type="text"
                 className="signup-input"
                 onChange={e => {
@@ -31,11 +68,11 @@ class SignUp extends React.Component {
                 }}
               />
             </div>
-
             <div className="sign-input-info">
-              <div>Adresse e-mail</div>{" "}
+              <label>Adresse e-mail</label>
               <input
                 required
+                name="email"
                 type="email"
                 className="signup-input"
                 onChange={e => {
@@ -43,12 +80,13 @@ class SignUp extends React.Component {
                 }}
               />
             </div>
-
             <div className="signup-pass">
-              <div className="sign-input-info" type="password">
-                Mot de passe
+              <div className="sign-input-info">
+                <label>Mot de passe </label>
                 <input
                   className="signup-input"
+                  required
+                  name="password"
                   type="password"
                   onChange={e => {
                     this.setState({ password: e.target.value });
@@ -64,9 +102,11 @@ class SignUp extends React.Component {
                 />
               </div>
               <div className="sign-input-info">
-                Confirmer le mot de passe
+                <label>Confirmer le mot de passe</label>
                 <input
                   className="signup-input"
+                  required
+                  name="passwordAgain"
                   type="password"
                   onChange={e => {
                     this.setState({ passwordBis: e.target.value });
@@ -94,18 +134,22 @@ class SignUp extends React.Component {
                 leboncoin susceptibles de m'intéresser
               </label>
             </div>
-
             <div>
               <input type="checkbox" id="acceptCGV" />
               <label htmlFor="acceptCGV">
                 J'accepte les Conditions Générales de Vente
               </label>
             </div>
-
             <button
               type="submit"
               className="signup-button"
-              onClick={() => {
+              onClick={e => {
+                e.preventDefault();
+
+                if (this.state.error !== null) {
+                  this.setState({ error: null });
+                }
+
                 if (
                   this.state.passwordCheck === true &&
                   this.state.password !== null &&
@@ -122,9 +166,11 @@ class SignUp extends React.Component {
                       }
                     )
                     .then(response => {
-                      console.log(response.data);
                       alert(`Bienvenue ${response.data.account.username} !`);
                       onSignUp(response.data);
+                    })
+                    .catch(error => {
+                      this.setState({ error: error });
                     });
                 } else {
                   alert("Informations invalides.");
@@ -133,7 +179,8 @@ class SignUp extends React.Component {
             >
               Créer mon compte personnel
             </button>
-          </div>
+          </form>
+          {this.state.error && <div> this.state.error.response </div>}
         </div>
       </div>
     );

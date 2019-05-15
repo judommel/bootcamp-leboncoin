@@ -9,7 +9,14 @@ class Home extends React.Component {
     data: null,
     isLoading: true,
     itemShown: null,
-    current: 1
+    current: 1,
+    search: {
+      exists: false,
+      searched: "",
+      sort: "price-asc",
+      priceMin: "",
+      priceMax: ""
+    }
   };
 
   render() {
@@ -20,18 +27,64 @@ class Home extends React.Component {
     return (
       <div>
         {" "}
-        <Search />
+        <Search
+          onSearch={e => {
+            axios
+              .get(
+                `https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=0&limit=25&title=${
+                  e.itemSearch
+                }&sort=${e.sort}&priceMin=${e.priceMin}&priceMax=${e.priceMax}`
+              )
+              .then(response =>
+                this.setState({
+                  data: response.data,
+                  isLoading: false,
+                  search: {
+                    exists: true,
+                    searched: e.itemSearch,
+                    sort: e.sort,
+                    priceMin: e.priceMin,
+                    priceMax: e.priceMax
+                  }
+                })
+              );
+          }}
+          onSelect={e => {
+            console.log(e);
+
+            axios
+              .get(
+                `https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=0&limit=25&sort=${e}`
+                // &title=${this.state.search.searched}&priceMin=${
+                //   this.state.search.priceMin
+                // }&priceMax=${this.state.search.priceMax}`
+              )
+              .then(response => {
+                console.log(response.data);
+
+                this.setState({
+                  data: response.data,
+                  isLoading: false,
+                  search: { ...this.state.search, sort: e }
+                });
+
+                console.log(this.state.search);
+              });
+          }}
+        />
         <div className="home-body">
           <ItemList items={this.state.data.offers} />
           <Pages
             current={this.state.current}
             count={this.state.data.count}
             onPageClick={i => {
-              console.log(i);
-
               axios
                 .get(
-                  `https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=${25 *
+                  `https://leboncoin-api.herokuapp.com/api/offer/with-count?title=${
+                    this.state.search.searched
+                  }&sort=${this.state.search.sort}&priceMin=${
+                    this.state.search.priceMin
+                  }&priceMax=${this.state.search.priceMax}&skip=${25 *
                     (i - 1)}&limit=25`
                 )
                 .then(response =>

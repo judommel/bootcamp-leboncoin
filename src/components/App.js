@@ -40,7 +40,7 @@ class App extends React.Component {
         />
         <Route
           path="/user/sign-up"
-          render={props => (
+          render={() => (
             <SignUp onSignUp={user => this.setState({ userData: user })} />
           )}
         />

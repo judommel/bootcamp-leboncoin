@@ -82,6 +82,7 @@ class SignUp extends React.Component {
                 <input
                   className="signup-input"
                   required
+                  minLength="6"
                   name="password"
                   type="password"
                   onChange={e => {
@@ -104,6 +105,7 @@ class SignUp extends React.Component {
                   required
                   name="passwordAgain"
                   type="password"
+                  minLength="6"
                   onChange={e => {
                     this.setState({ passwordBis: e.target.value });
 

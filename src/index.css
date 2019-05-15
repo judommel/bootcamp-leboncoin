@@ -481,7 +481,7 @@ header {
 
 .sign-up-box {
   width: 100%;
-  height: 560px;
+  height: auto;
   margin-top: 20px;
   background-color: #ffffff;
   display: flex;
@@ -585,7 +585,7 @@ header {
   margin: 0;
   background-color: #ffffff;
   width: 100%;
-  height: 520px;
+  height: auto;
   border: 1px solid #cad0d8;
 }
 
@@ -606,4 +606,28 @@ header {
 .publish-box textarea {
   border-radius: 5px;
   font-size: 14px;
+}
+
+.file-button {
+  border-radius: 5px;
+  padding: 0px 0px;
+  margin: 10px 0px;
+  width: 200px;
+  height: 25px;
+  color: #ffffff;
+  background-color: #4183d7;
+  font-size: 13px;
+  line-height: 19px;
+  margin: 15px 20px;
+}
+
+.upload-img {
+  height: 50px;
+  width: 100px;
+  object-fit: cover;
+  margin: 10px;
+}
+
+.file-box {
+  margin: 15px 20px;
 }

@@ -11,9 +11,8 @@ class Home extends React.Component {
     itemShown: null,
     current: 1,
     search: {
-      exists: false,
       searched: "",
-      sort: "price-asc",
+      sort: "",
       priceMin: "",
       priceMax: ""
     }
@@ -40,7 +39,6 @@ class Home extends React.Component {
                   data: response.data,
                   isLoading: false,
                   search: {
-                    exists: true,
                     searched: e.itemSearch,
                     sort: e.sort,
                     priceMin: e.priceMin,
@@ -50,15 +48,15 @@ class Home extends React.Component {
               );
           }}
           onSelect={e => {
-            console.log(e);
-
             axios
-              .get(
-                `https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=0&limit=25&sort=${e}`
-                // &title=${this.state.search.searched}&priceMin=${
-                //   this.state.search.priceMin
-                // }&priceMax=${this.state.search.priceMax}`
-              )
+              .get(`https://leboncoin-api.herokuapp.com/api/offer/with-count`, {
+                params: {
+                  title: this.state.search.searched,
+                  priceMin: this.state.search.priceMin,
+                  priceMax: this.state.search.priceMax,
+                  sort: e
+                }
+              })
               .then(response => {
                 console.log(response.data);
 

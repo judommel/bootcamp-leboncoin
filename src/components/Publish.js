@@ -1,11 +1,19 @@
 import React from "react";
+import ReactFileReader from "react-file-reader";
 import axios from "axios";
 
 class Publish extends React.Component {
   state = {
     title: "",
     description: "",
-    price: ""
+    price: "",
+    files: []
+  };
+
+  handleFiles = files => {
+    const newFiles = [...this.state.files, ...files.base64];
+
+    this.setState({ files: newFiles });
   };
 
   handleSubmit = async e => {
@@ -17,7 +25,8 @@ class Publish extends React.Component {
         {
           title: this.state.title,
           description: this.state.description,
-          price: this.state.price
+          price: Number(this.state.price),
+          files: this.state.files
         },
         {
           headers: {
@@ -28,7 +37,7 @@ class Publish extends React.Component {
         }
       );
 
-      console.log(response.data);
+      console.log(this.state);
 
       alert(
         `Merci ${
@@ -42,7 +51,30 @@ class Publish extends React.Component {
     }
   };
 
+  renderFiles() {
+    const filesArray = [];
+    for (let i = 0; i < this.state.files.length; i++) {
+      filesArray.push(
+        <img
+          key={i}
+          className="upload-img"
+          onClick={() => {
+            const newFiles = [...this.state.files];
+            newFiles.splice(i, 1);
+            this.setState({ files: newFiles });
+          }}
+          src={this.state.files[i]}
+          alt="annonce"
+        />
+      );
+    }
+    console.log(filesArray);
+    return filesArray;
+  }
+
   render() {
+    console.log(this.state.files);
+
     return (
       <div className="container publish">
         <div className="publish-title">
@@ -59,7 +91,6 @@ class Publish extends React.Component {
                 onChange={e => this.setState({ title: e.target.value })}
               />
             </div>
-
             <div className="publish-box">
               <label>Texte de l'annonce</label>
               <textarea
@@ -70,7 +101,6 @@ class Publish extends React.Component {
                 onChange={e => this.setState({ description: e.target.value })}
               />
             </div>
-
             <div className="publish-box">
               <label>Prix</label>
               <input
@@ -79,6 +109,19 @@ class Publish extends React.Component {
                 onChange={e => this.setState({ price: e.target.value })}
               />
             </div>
+            <div>
+              <ReactFileReader
+                fileTypes={[".png", ".jpg"]}
+                base64={true}
+                multipleFiles={true} // `false si une seule image`
+                handleFiles={files => this.handleFiles(files)}
+              >
+                <button className="file-button">Choisir des images</button>
+              </ReactFileReader>
+            </div>
+            {this.state.files && (
+              <div className="file-box">{this.renderFiles()}</div>
+            )}
           </div>
 
           <button className="publish-button" type="submit">

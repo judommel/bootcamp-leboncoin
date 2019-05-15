@@ -56,6 +56,7 @@ class Search extends React.Component {
                 this.setState({ sort: e.target.value });
                 onSelect(e.target.value);
               }}
+              value={this.state.sort}
             >
               <option value="price-asc">Tri : Prix croissants</option>
               <option value="price-desc">Tri : Prix décroissants</option>

@@ -7,7 +7,6 @@ import LogIn from "./LogIn";
 import SignUp from "./SignUp";
 import Cookies from "js-cookie";
 
-
 class App extends React.Component {
   state = {
     userData: null
@@ -20,10 +19,15 @@ class App extends React.Component {
 
     return (
       <Router>
-        <Header />
+        <Header
+          userName={
+            this.state.userData ? this.state.userData.account.username : null
+          }
+        />
         <Route exact path="/" component={Home} />
         <Route path="/offer/:id" component={Offer} />
-        <Route path="/user/log-in"
+        <Route
+          path="/user/log-in"
           render={props => {
             return (
               <LogIn
@@ -32,8 +36,10 @@ class App extends React.Component {
                 }}
               />
             );
-          }} />
-<Route path="/user/sign-up"
+          }}
+        />
+        <Route
+          path="/user/sign-up"
           render={props => (
             <SignUp onSignUp={user => this.setState({ userData: user })} />
           )}

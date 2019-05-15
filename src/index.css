@@ -17,52 +17,54 @@ code {
 }
 
 /* HEADER */
-.header-body {
+header {
   background-color: white;
   height: 60px;
+  box-shadow: 0px -3px 12px 5px black;
+}
+.header-body {
+  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: flex-start;
 }
 
-.header-recherche-favoris {
+.headerLogo-container {
+  height: 100%;
   display: flex;
-  flex-direction: row;
+  align-items: center;
 }
 
-.header-annonce {
+.headerAnnounce-body {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.header-announce {
   height: 10px;
   width: 190px;
-  display: flex;
-  flex-direction: row;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 21px;
+  display: flex; /*ok*/
+  flex-direction: row; /*ok*/
+  justify-content: center;
+  font-size: 14px; /*ok*/
+  font-weight: 600; /*ok*/
+  line-height: 21px; /*ok*/
   align-items: center;
-  background-color: #f56b2a;
-  border-radius: 5px;
-  color: white;
-  padding: 15px 8px;
-  margin: 0;
-  margin-left: 0px;
+  background-color: #f56b2a; /*ok*/
+  border-radius: 5px; /*ok*/
+  color: white; /*ok*/
+  padding: 15px 7px;
 }
 
-.header-recherche-favoris {
-  width: 500px;
-  display: flex;
-  justify-content: space-between;
-
-  height: 100%;
-}
-
-.header-annonce:hover {
+.header-announce:hover {
   cursor: pointer;
   background-color: #c0562a;
 }
-.header-annonce-logo {
-  height: 25px;
-}
-.header-annonce-text {
+
+.header-announce-text {
   margin-left: 10px;
   font-size: 14px;
   line-height: 21px;
@@ -70,27 +72,75 @@ code {
 }
 
 .header-search {
+  text-decoration: none;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: #1a1a1a;
   font-size: 14px;
   line-height: 21px;
   font-weight: 600;
+  height: 100%;
+  padding: 0px 10px;
+  margin: 0px 10px;
 }
 
-.header-seconnecter {
+.header-search:hover {
+  cursor: pointer;
+}
+
+.header-search-text {
+  margin-left: 10px;
+}
+
+.header-userName {
+  display: flex;
+  align-items: center;
   height: 100%;
+}
+.header-tools {
+  justify-self: flex-end;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.header-tools-single {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 12px;
+  line-height: 18px;
+  text-decoration: none;
+  color: #1a1a1a;
+  margin: 0px 5px;
 }
 
-.header-seConnecter > p {
-  text-align: center;
+.header-tools-single p {
   margin: 0;
   padding: 0;
 }
 
+.header-tools-logo {
+  height: 25px;
+  margin-bottom: 5px;
+}
+
+.header-tools-single p {
+  margin: 0;
+  padding: 0;
+}
+
+.header-tools-logo {
+  height: 25px;
+  margin-bottom: 8px;
+}
+
+.header-tools-logo-signUp {
+  height: 30px;
+  margin-bottom: 3px;
+}
 /* SEARCH */
 
 .search-box {

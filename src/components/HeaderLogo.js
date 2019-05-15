@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function HeaderLogo(props) {
   return (
-    <div>
+    <div className="headerLogo-container">
       <Link to={"/"}>
         <svg height="25" width="142" viewBox="0 0 708 124">
           <path

@@ -31,7 +31,7 @@ class LogIn extends React.Component {
           <p>Mot de Passe</p>
           <input
             className="logIn-form-password"
-            type="text"
+            type="password"
             name="nom"
             id="nom"
             value={this.state.password}

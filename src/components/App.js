@@ -5,6 +5,7 @@ import Offer from "./Offer";
 import Header from "./Header";
 import LogIn from "./LogIn";
 import SignUp from "./SignUp";
+import Publish from "./Publish";
 import Cookies from "js-cookie";
 
 class App extends React.Component {
@@ -45,6 +46,7 @@ class App extends React.Component {
             Cookies.remove("token");
             Cookies.remove("id");
           }}
+
         />
         <Route exact path="/" component={Home} />
         <Route path="/offer/:id" component={Offer} />
@@ -65,10 +67,17 @@ class App extends React.Component {
         />
         <Route
           path="/user/sign-up"
-          render={() => (
-            <SignUp onSignUp={user => this.setState({ userData: user })} />
-          )}
+          render={() => {
+            if (this.state.userData) {
+              return <Redirect from="/user/sign-up" to="/" />;
+            } else {
+              return (
+                <SignUp onSignUp={user => this.setState({ userData: user })} />
+              );
+            }
+          }}
         />
+        <Route path="/publish" component={Publish} />
       </Router>
     );
   }

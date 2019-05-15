@@ -1,13 +1,15 @@
 import React from "react";
-import axios from "axios";
 
 class Search extends React.Component {
   state = {
-    itemSearch: null
+    itemSearch: null,
+    sort: "price-asc",
+    priceMin: "",
+    priceMax: ""
   };
 
   render() {
-    const { onSearch } = this.props;
+    const { onSearch, onSelect } = this.props;
 
     return (
       <div className="search-box">
@@ -16,6 +18,7 @@ class Search extends React.Component {
             <input
               className="main-search-input"
               type="text"
+              value={this.state.itemSearch}
               onChange={e => this.setState({ itemSearch: e.target.value })}
               placeholder="  Que recherchez-vous ?"
             />
@@ -23,12 +26,40 @@ class Search extends React.Component {
               className="search-button"
               onClick={() => {
                 if (this.state.itemSearch !== null) {
-                  onSearch(this.state.itemSearch);
+                  onSearch(this.state);
                 }
               }}
             >
               Rechercher
             </button>
+          </div>
+          <div className="search-inline">
+            <div>
+              {"Prix entre : "}
+              <input
+                type="texte"
+                onChange={e => {
+                  if (typeof parseInt(e.target.value) === "number") {
+                    this.setState({ priceMin: e.target.value });
+                  }
+                }}
+              />
+              {" et : "}
+              <input
+                type="texte"
+                onChange={e => this.setState({ priceMax: e.target.value })}
+              />
+            </div>
+            <select
+              className="search-select"
+              onChange={e => {
+                this.setState({ sort: e.target.value });
+                onSelect(e.target.value);
+              }}
+            >
+              <option value="price-asc">Tri : Prix croissants</option>
+              <option value="price-desc">Tri : Prix décroissants</option>
+            </select>
           </div>
         </div>
       </div>

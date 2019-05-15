@@ -10,8 +10,13 @@ class Home extends React.Component {
     isLoading: true,
     itemShown: null,
     current: 1,
-    search: false,
-    searched: ""
+    search: {
+      exists: false,
+      searched: "",
+      sort: "price-asc",
+      priceMin: "",
+      priceMax: ""
+    }
   };
 
   render() {
@@ -26,16 +31,45 @@ class Home extends React.Component {
           onSearch={e => {
             axios
               .get(
-                `https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=0&limit=25&title=${e}`
+                `https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=0&limit=25&title=${
+                  e.itemSearch
+                }&sort=${e.sort}&priceMin=${e.priceMin}&priceMax=${e.priceMax}`
               )
               .then(response =>
                 this.setState({
                   data: response.data,
                   isLoading: false,
-                  search: true,
-                  searched: e
+                  search: {
+                    exists: true,
+                    searched: e.itemSearch,
+                    sort: e.sort,
+                    priceMin: e.priceMin,
+                    priceMax: e.priceMax
+                  }
                 })
               );
+          }}
+          onSelect={e => {
+            console.log(e);
+
+            axios
+              .get(
+                `https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=0&limit=25&sort=${e}`
+                // &title=${this.state.search.searched}&priceMin=${
+                //   this.state.search.priceMin
+                // }&priceMax=${this.state.search.priceMax}`
+              )
+              .then(response => {
+                console.log(response.data);
+
+                this.setState({
+                  data: response.data,
+                  isLoading: false,
+                  search: { ...this.state.search, sort: e }
+                });
+
+                console.log(this.state.search);
+              });
           }}
         />
         <div className="home-body">
@@ -47,8 +81,11 @@ class Home extends React.Component {
               axios
                 .get(
                   `https://leboncoin-api.herokuapp.com/api/offer/with-count?title=${
-                    this.state.searched
-                  }&skip=${25 * (i - 1)}&limit=25`
+                    this.state.search.searched
+                  }&sort=${this.state.search.sort}&priceMin=${
+                    this.state.search.priceMin
+                  }&priceMax=${this.state.search.priceMax}&skip=${25 *
+                    (i - 1)}&limit=25`
                 )
                 .then(response =>
                   this.setState({

@@ -99,7 +99,8 @@ code {
 }
 
 .search-box input,
-button {
+button,
+select {
   border-radius: 5px;
   height: 40px;
   padding: 0px 0px;
@@ -117,10 +118,18 @@ button {
   width: 794px;
 }
 
+.main-search-input input {
+  padding-left: 40px;
+}
+
 .search-button {
   width: 256px;
   color: #ffffff;
   background-color: #4183d7;
+}
+
+.search-select {
+  width: 256px;
 }
 
 /* HOME */
@@ -473,6 +482,7 @@ button {
   height: 40px;
   font-size: 13px;
   line-height: 19px;
+  width: 100%;
 }
 
 .password-error {

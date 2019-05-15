@@ -12,30 +12,28 @@ class SignUp extends React.Component {
   };
 
   handleSubmit(e) {
-    {
-      e.preventDefault();
+    e.preventDefault();
 
-      if (this.state.error !== null) {
-        this.setState({ error: null });
-      }
-      axios
-        .post("https://leboncoin-api.herokuapp.com/api/user/sign_up", {
-          email: this.state.email,
-          username: this.state.username,
-          password: this.state.password
-        })
-        .then(response => {
-          alert(`Bienvenue ${response.data.account.username} !`);
-          this.props.onSignUp({
-            id: response.data._id,
-            token: response.data.token,
-            username: response.data.account.username
-          });
-        })
-        .catch(error => {
-          this.setState({ error: error });
-        });
+    if (this.state.error !== null) {
+      this.setState({ error: null });
     }
+    axios
+      .post("https://leboncoin-api.herokuapp.com/api/user/sign_up", {
+        email: this.state.email,
+        username: this.state.username,
+        password: this.state.password
+      })
+      .then(response => {
+        alert(`Bienvenue ${response.data.account.username} !`);
+        this.props.onSignUp({
+          id: response.data._id,
+          token: response.data.token,
+          username: response.data.account.username
+        });
+      })
+      .catch(error => {
+        this.setState({ error: error });
+      });
   }
 
   render() {

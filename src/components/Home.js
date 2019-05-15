@@ -12,11 +12,89 @@ class Home extends React.Component {
     current: 1,
     search: {
       searched: "",
-      sort: "",
+      sort: "price-asc",
       priceMin: "",
       priceMax: ""
     }
   };
+
+  onSearch(e) {
+    axios
+      .get(
+        `https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=0&limit=25&title=${
+          e.itemSearch
+        }&sort=${e.sort}&priceMin=${e.priceMin}&priceMax=${e.priceMax}`
+      )
+      .then(response =>
+        this.setState({
+          data: response.data,
+          isLoading: false,
+          search: {
+            searched: e.itemSearch,
+            sort: e.sort,
+            priceMin: e.priceMin,
+            priceMax: e.priceMax
+          }
+        })
+      );
+  }
+
+  onSelect(e) {
+    axios
+      .get(`https://leboncoin-api.herokuapp.com/api/offer/with-count`, {
+        params: {
+          title: this.state.search.searched,
+          priceMin: this.state.search.priceMin,
+          priceMax: this.state.search.priceMax,
+          sort: e
+        }
+      })
+      .then(response => {
+        this.setState({
+          data: response.data,
+          isLoading: false,
+          search: { ...this.state.search, sort: e }
+        });
+      });
+  }
+
+  onPriceMin(e) {
+    axios
+      .get(`https://leboncoin-api.herokuapp.com/api/offer/with-count`, {
+        params: {
+          title: this.state.search.searched,
+          priceMin: e,
+          priceMax: this.state.search.priceMax,
+          sort: this.state.search.sort
+        }
+      })
+      .then(response => {
+        this.setState({
+          data: response.data,
+          isLoading: false,
+          search: { ...this.state.search, priceMin: e }
+        });
+      });
+  }
+
+  onPriceMax(e) {
+    axios
+      .get(`https://leboncoin-api.herokuapp.com/api/offer/with-count`, {
+        params: {
+          title: this.state.search.searched,
+          priceMax: e,
+          priceMin: this.state.search.priceMin,
+          sort: this.state.search.sort
+        }
+      })
+      .then(response => {
+        this.setState({
+          data: response.data,
+          isLoading: false,
+          search: { ...this.state.search, priceMax: e }
+        });
+      });
+  }
 
   render() {
     if (this.state.isLoading === true) {
@@ -27,48 +105,10 @@ class Home extends React.Component {
       <div>
         {" "}
         <Search
-          onSearch={e => {
-            axios
-              .get(
-                `https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=0&limit=25&title=${
-                  e.itemSearch
-                }&sort=${e.sort}&priceMin=${e.priceMin}&priceMax=${e.priceMax}`
-              )
-              .then(response =>
-                this.setState({
-                  data: response.data,
-                  isLoading: false,
-                  search: {
-                    searched: e.itemSearch,
-                    sort: e.sort,
-                    priceMin: e.priceMin,
-                    priceMax: e.priceMax
-                  }
-                })
-              );
-          }}
-          onSelect={e => {
-            axios
-              .get(`https://leboncoin-api.herokuapp.com/api/offer/with-count`, {
-                params: {
-                  title: this.state.search.searched,
-                  priceMin: this.state.search.priceMin,
-                  priceMax: this.state.search.priceMax,
-                  sort: e
-                }
-              })
-              .then(response => {
-                console.log(response.data);
-
-                this.setState({
-                  data: response.data,
-                  isLoading: false,
-                  search: { ...this.state.search, sort: e }
-                });
-
-                console.log(this.state.search);
-              });
-          }}
+          onSearch={e => this.onSearch(e)}
+          onSelect={e => this.onSelect(e)}
+          onPriceMax={e => this.onPriceMax(e)}
+          onPriceMin={e => this.onPriceMin(e)}
         />
         <div className="home-body">
           <ItemList items={this.state.data.offers} />

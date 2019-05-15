@@ -9,7 +9,7 @@ class Search extends React.Component {
   };
 
   render() {
-    const { onSearch, onSelect } = this.props;
+    const { onSearch, onSelect, onPriceMin, onPriceMax } = this.props;
 
     return (
       <div className="search-box">
@@ -37,8 +37,10 @@ class Search extends React.Component {
             <div>
               {"Prix entre : "}
               <input
-                type="texte"
+                type="text"
                 onChange={e => {
+                  onPriceMin(e.target.value);
+
                   if (typeof parseInt(e.target.value) === "number") {
                     this.setState({ priceMin: e.target.value });
                   }
@@ -46,8 +48,11 @@ class Search extends React.Component {
               />
               {" et : "}
               <input
-                type="texte"
-                onChange={e => this.setState({ priceMax: e.target.value })}
+                type="text"
+                onChange={e => {
+                  onPriceMax(e.target.value);
+                  this.setState({ priceMax: e.target.value });
+                }}
               />
             </div>
             <select

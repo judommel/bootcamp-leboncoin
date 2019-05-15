@@ -17,7 +17,15 @@ class Offer extends React.Component {
         <div className="offer">
           <div className="offer-details">
             <div className="offer-info">
-              <div className="offer-pic" />
+              <div className="offer-pic">
+                {this.state.data.pictures.length > 0 && (
+                  <img
+                    className="image"
+                    src={`${this.state.data.pictures[0].url}`}
+                    alt={this.state.data.title}
+                  />
+                )}
+              </div>
               <div className="offer-title-price">
                 <h2>{this.state.data.title}</h2>
                 <div className="offer-price">{this.state.data.price} €</div>

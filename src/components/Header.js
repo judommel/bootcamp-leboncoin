@@ -6,7 +6,7 @@ import HeaderTools from "./HeaderTools";
 import HeaderUserName from "./HeaderUserName";
 
 function Header(props) {
-  const { userName } = props;
+  const { userName, onLogOutClick } = props;
   return (
     <header>
       <div className="header-body container">
@@ -14,7 +14,10 @@ function Header(props) {
         <HeaderAnnounce />
         <HeaderSearch />
         <HeaderUserName userName={userName} />
-        <HeaderTools />
+        <HeaderTools
+          userName={userName}
+          onLogOutClick={() => onLogOutClick()}
+        />
       </div>
     </header>
   );

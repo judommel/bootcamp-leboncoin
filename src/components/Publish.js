@@ -30,9 +30,7 @@ class Publish extends React.Component {
         },
         {
           headers: {
-            authorization:
-              "Bearer " +
-              "IUWtZaYJNZEvqA1nDyDURjB6iJO8Yrgrj2DqccgXWXbbyIm5KpPk7QCJw5EtFDBS"
+            authorization: "Bearer " + this.props.token
           }
         }
       );

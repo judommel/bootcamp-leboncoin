@@ -46,7 +46,6 @@ class App extends React.Component {
             Cookies.remove("token");
             Cookies.remove("id");
           }}
-
         />
         <Route exact path="/" component={Home} />
         <Route path="/offer/:id" component={Offer} />
@@ -77,7 +76,15 @@ class App extends React.Component {
             }
           }}
         />
-        <Route path="/publish" component={Publish} />
+        <Route
+          path="/publish"
+          render={() => {
+            if (this.state.userData === null) {
+              return <Redirect from="/publish" to="/user/log-in" />;
+            }
+            return <Publish token={this.state.userData.token} />;
+          }}
+        />
       </Router>
     );
   }

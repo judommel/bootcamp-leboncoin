@@ -16,6 +16,10 @@ code {
   margin: auto;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 /* HEADER */
 header {
   background-color: white;
@@ -552,6 +556,10 @@ header {
   font-size: 13px;
   line-height: 19px;
   width: 100%;
+}
+
+.signup-button:hover {
+  cursor: pointer;
 }
 
 .password-error {

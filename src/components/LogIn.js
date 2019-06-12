@@ -21,8 +21,8 @@ class LogIn extends React.Component {
           <input
             className="logIn-form-email"
             type="text"
-            name="nom"
-            id="nom"
+            name="email"
+            id="email"
             value={this.state.email}
             onChange={event => {
               this.setState({ email: event.target.value });
@@ -70,7 +70,7 @@ class LogIn extends React.Component {
           </button>
           <div className="logIn-signIn">
             <p className="logIn-noAccount">Vous n'avez pas de compte ?</p>
-            <Link className="logIn-signIn-link" to={`/user/SignIn`}>
+            <Link className="logIn-signIn-link" to={`/user/sign-up`}>
               <div className="logIn-createAccount">Créer un compte</div>
             </Link>
           </div>

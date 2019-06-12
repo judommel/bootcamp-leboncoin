@@ -21,7 +21,7 @@ class Publish extends React.Component {
 
     try {
       const response = await axios.post(
-        "https://leboncoin-api.herokuapp.com/api/offer/publish",
+        "http://localhost:3001/offer/publish",
         {
           title: this.state.title,
           description: this.state.description,

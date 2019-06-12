@@ -355,8 +355,7 @@ header {
 .image {
   height: 100%;
   width: 100%;
-  object-fit: cover;
-  background-size: cover;
+  object-fit: contain;
 }
 .item-description {
   text-decoration: none;

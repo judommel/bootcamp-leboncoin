@@ -141,7 +141,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`http://localhost:3001/with-count?skip=0&limit=25`)
+      .get(`http://localhost:3001/with-count?skip=0&limit=25&sort=price-asc`)
       .then(response =>
         this.setState({ data: response.data, isLoading: false })
       );

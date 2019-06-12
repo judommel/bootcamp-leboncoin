@@ -45,6 +45,7 @@ class Publish extends React.Component {
         } est en vente.`
       );
     } catch (error) {
+      alert("Une erreur est survenue. Veuillez rentrer des données valides.");
       console.log(error);
     }
   };
@@ -114,7 +115,7 @@ class Publish extends React.Component {
                 multipleFiles={true} // `false si une seule image`
                 handleFiles={files => this.handleFiles(files)}
               >
-                <button className="file-button">Choisir des images</button>
+                <div className="file-button">Choisir des images</div>
               </ReactFileReader>
             </div>
             {this.state.files && (

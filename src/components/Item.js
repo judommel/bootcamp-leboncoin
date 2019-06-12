@@ -9,11 +9,7 @@ function Item(props) {
     <div className="item">
       <div className="item-pic">
         {item.pictures.length > 0 && (
-          <img
-            className="image"
-            src={`${item.pictures[0].url}`}
-            alt={item.title}
-          />
+          <img className="image" src={`${item.pictures[0]}`} alt={item.title} />
         )}
       </div>
 

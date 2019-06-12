@@ -21,7 +21,7 @@ class Offer extends React.Component {
                 {this.state.data.pictures.length > 0 && (
                   <img
                     className="image"
-                    src={`${this.state.data.pictures[0].url}`}
+                    src={`${this.state.data.pictures[0]}`}
                     alt={this.state.data.title}
                   />
                 )}

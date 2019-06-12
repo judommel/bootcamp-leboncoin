@@ -4,7 +4,7 @@ function HeaderUserName(props) {
   const { userName } = props;
   return (
     <div className="header-userName">
-      {userName ? `Welcome, ${userName}` : ""}
+      {userName ? `Bienvenue, ${userName}` : ""}
     </div>
   );
 }

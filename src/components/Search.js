@@ -37,7 +37,7 @@ class Search extends React.Component {
             <div>
               {"Prix entre : "}
               <input
-                type="text"
+                type="number"
                 onChange={e => {
                   onPriceMin(e.target.value);
 
@@ -48,7 +48,7 @@ class Search extends React.Component {
               />
               {" et : "}
               <input
-                type="text"
+                type="number"
                 onChange={e => {
                   onPriceMax(e.target.value);
                   this.setState({ priceMax: e.target.value });

@@ -35,8 +35,6 @@ class Publish extends React.Component {
         }
       );
 
-      console.log(this.state);
-
       alert(
         `Merci ${
           response.data.creator.account.username

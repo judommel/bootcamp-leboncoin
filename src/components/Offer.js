@@ -45,7 +45,11 @@ class Offer extends React.Component {
 
   async componentDidMount() {
     await axios
-      .get(`http://localhost:3001/offer/${this.props.match.params.id}`)
+      .get(
+        `https://my-leboncoin-server.herokuapp.com/offer/${
+          this.props.match.params.id
+        }`
+      )
       .then(response =>
         this.setState({ data: response.data, isLoading: false })
       );

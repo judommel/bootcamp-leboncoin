@@ -21,7 +21,7 @@ class Home extends React.Component {
   onSearch(e) {
     axios
       .get(
-        `http://localhost:3001/with-count?skip=0&limit=25&title=${
+        `https://my-leboncoin-server.herokuapp.com/with-count?skip=0&limit=25&title=${
           e.itemSearch
         }&sort=${e.sort}&priceMin=${e.priceMin}&priceMax=${e.priceMax}`
       )
@@ -41,7 +41,7 @@ class Home extends React.Component {
 
   onSelect(e) {
     axios
-      .get(`http://localhost:3001/with-count`, {
+      .get(`https://my-leboncoin-server.herokuapp.com/with-count`, {
         params: {
           title: this.state.search.searched,
           priceMin: this.state.search.priceMin,
@@ -60,7 +60,7 @@ class Home extends React.Component {
 
   onPriceMin(e) {
     axios
-      .get(`http://localhost:3001/with-count`, {
+      .get(`https://my-leboncoin-server.herokuapp.com/with-count`, {
         params: {
           title: this.state.search.searched,
           priceMin: e,
@@ -79,7 +79,7 @@ class Home extends React.Component {
 
   onPriceMax(e) {
     axios
-      .get(`http://localhost:3001/with-count`, {
+      .get(`https://my-leboncoin-server.herokuapp.com/with-count`, {
         params: {
           title: this.state.search.searched,
           priceMax: e,
@@ -118,7 +118,7 @@ class Home extends React.Component {
             onPageClick={i => {
               axios
                 .get(
-                  `http://localhost:3001/with-count?title=${
+                  `https://my-leboncoin-server.herokuapp.com/with-count?title=${
                     this.state.search.searched
                   }&sort=${this.state.search.sort}&priceMin=${
                     this.state.search.priceMin
@@ -141,7 +141,9 @@ class Home extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`http://localhost:3001/with-count?skip=0&limit=25&sort=price-asc`)
+      .get(
+        `https://my-leboncoin-server.herokuapp.com/with-count?skip=0&limit=25&sort=price-asc`
+      )
       .then(response =>
         this.setState({ data: response.data, isLoading: false })
       );

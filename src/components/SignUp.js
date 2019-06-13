@@ -18,7 +18,7 @@ class SignUp extends React.Component {
       this.setState({ error: null });
     }
     axios
-      .post("http://localhost:3001/user/sign_up", {
+      .post("https://my-leboncoin-server.herokuapp.com/user/sign_up", {
         email: this.state.email,
         username: this.state.username,
         password: this.state.password

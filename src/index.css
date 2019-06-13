@@ -124,6 +124,10 @@ header {
   margin: 0px 5px;
 }
 
+.tools-orange {
+  color: #f56b2a;
+}
+
 .header-tools-single p {
   margin: 0;
   padding: 0;

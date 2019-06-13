@@ -1,4 +1,5 @@
 A leboncoin clone React Project. All rights reserved to Leboncoin.
+Full Stack project with Node.js server
 
 ## Demo
 Try it here : https://jdommel-leboncoin.herokuapp.com/

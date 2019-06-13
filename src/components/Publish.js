@@ -65,13 +65,10 @@ class Publish extends React.Component {
         />
       );
     }
-    console.log(filesArray);
     return filesArray;
   }
 
   render() {
-    console.log(this.state.files);
-
     return (
       <div className="container publish">
         <div className="publish-title">

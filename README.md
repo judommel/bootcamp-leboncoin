@@ -1,6 +1,7 @@
-A leboncoin clone React Project.
+A leboncoin clone React Project. All rights reserved to Leboncoin.
 
 ## Demo
+Try it here : https://jdommel-leboncoin.herokuapp.com/
 
 ## Preview
 ![leboncoin-home](https://user-images.githubusercontent.com/47571184/59341051-6cbb1c00-8d07-11e9-90c8-737c07f76aff.jpg)

@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+const reasonsPic = require("../assets/img/reasons-why.jpg");
 
 class SignUp extends React.Component {
   state = {
@@ -42,7 +43,7 @@ class SignUp extends React.Component {
         <div className="sign-up-box">
           <div className="info-box">
             <h3>Pourquoi créer un compte ?</h3>
-            <img src="../assets/img/reasons-why.jpg" alt="reasons-why" />
+            <img src={reasonsPic} alt="reasons-why" />
             {this.state.error && (
               <div className="error">
                 {this.state.error.response.data.error}

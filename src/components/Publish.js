@@ -96,11 +96,13 @@ class Publish extends React.Component {
               />
             </div>
             <div className="publish-box">
-              <label>Prix</label>
+              <label>Prix (en euros)</label>
               <input
-                type="text"
+                type="number"
                 name="price"
-                onChange={e => this.setState({ price: e.target.value })}
+                onChange={e =>
+                  this.setState({ price: e.target.value.toFixed(2) })
+                }
               />
             </div>
             <div>
